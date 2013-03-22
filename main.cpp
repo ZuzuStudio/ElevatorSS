@@ -8,7 +8,7 @@ int main()
 {
     short stages, people;
     fstream fin;
-    fin.open("Script.txt");
+    fin.open("Script");
     fin>>stages;
     fin>>people;
     Queue *Queue_fl;
@@ -28,11 +28,6 @@ int main()
         enqueue(Queue_fl[start-1].head, Queue_fl[start-1].tail, man);
     }
     fin.close();
-    short time=0;
-    Data x;
-    on_tail(Queue_fl[2].tail, x);
-    cout<<is_empty(Queue_fl[1].head, Queue_fl[1].tail);
-
-
+    delete [] Queue_fl;
     return 0;
 }
