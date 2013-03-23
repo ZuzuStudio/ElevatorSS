@@ -5,77 +5,80 @@
 
 using namespace std;
 
-void enqueue (Node *&head, Node *&tail, Data dt)
+void enqueue (Queue &a, Data dt)
 {
     Node *temp=NULL;
     temp=new Node;
     temp->content=dt;
     temp->link=NULL;
-    if(!is_empty(head, tail)){
-        tail->link=temp;
-        tail=temp;
+    if(!is_empty(a)){
+        a.tail->link=temp;
+        a.tail=temp;
     }
     else{
-        tail=temp;
-        head=tail;
+        a.tail=temp;
+        a.head=a.tail;
     }
     temp=NULL;
 }
 
-bool dequeue (Node *&head, Node *&tail)
+bool dequeue (Queue &a)
 {
-    if (is_empty(head, tail))
+    if (!a.tail)
         return false;
     Node *temp=NULL;
-    temp=head ;
-    head=head->link;
+    temp=a.head ;
+    a.head=a.head->link;
     temp->content.finish=0;
     temp->content.time=0;
     temp->link=NULL;
     delete temp;
     temp=NULL;
+    if (!a.tail)
+        a.head=NULL;
     return true;
 }
 
-bool on_head(Node *head, Data &dt)
+bool on_head(Queue a, Data &dt)
 {
-    if (head)
+    if (a.head)
     {
-        dt=head->content;
+        dt=a.head->content;
         return true;
     }
     return false;
 }
 
-bool on_tail( Node *tail, Data &dt)
+bool on_tail( Queue a, Data &dt)
 {
-    if (tail)
+    if (a.tail)
     {
-        dt=tail->content;
+        dt=a.tail->content;
         return true;
     }
     return false;
 }
 
-bool is_empty (Node *head, Node *tail)
+bool is_empty (Queue a)
 {
-    if(head&&tail)
+    if(a.tail)
         return false;
     return true;
 }
 
-void clear (Node *&head, Node *&tail)
+void clear (Queue &a)
 {
-    while(!is_empty(head, tail))
+    while(!is_empty(a))
     {
         Node *temp;
-        temp=tail;
-        tail=temp->link;
+        temp=a.tail;
+        a.tail=temp->link;
         temp->content.finish=0;
         temp->content.time=0;
         temp->link=NULL;
         delete temp;
         temp=NULL;
     }
+    if (!a.tail)
+        a.head=NULL;
 }
-

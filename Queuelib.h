@@ -21,11 +21,11 @@ struct Queue
     Node *tail;
 };
 
-void enqueue (Node *&head, Node *&tail, Data dt);
-bool dequeue (Node *&head, Node *&tail, Data &dt);
-bool is_empty (Node *head, Node *tail);
-bool on_tail(Node *tail, Data &dt);
-bool on_head(Node *head, Data &dt);
-void clear (Node *&head, Node *&tail);
+void enqueue (Queue &a, Data dt);
+bool dequeue (Queue &a, Data &dt);
+bool is_empty (Queue a);
+bool on_tail(Queue a, Data &dt);
+bool on_head(Queue a, Data &dt);
+void clear (Queue &a);
 
 #endif

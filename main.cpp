@@ -25,7 +25,7 @@ int main()
         fin>>start;
         fin>>man.finish;
         fin>>man.time;
-        enqueue(Queue_fl[start-1].head, Queue_fl[start-1].tail, man);
+        enqueue(Queue_fl[start-1], man);
     }
     fin.close();
     delete [] Queue_fl;
