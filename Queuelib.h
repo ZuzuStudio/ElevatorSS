@@ -22,7 +22,7 @@ struct Queue
 };
 
 void enqueue (Queue &a, Data dt);
-bool dequeue (Queue &a, Data &dt);
+bool dequeue (Queue &a);
 bool is_empty (Queue a);
 bool on_tail(Queue a, Data &dt);
 bool on_head(Queue a, Data &dt);
