@@ -35,26 +35,20 @@ int main()
         short temps=current_stage, tempo=order;
         while (true){
             if (!is_empty(Queue_fl[temps]))
-                if ((Queue_fl[temps].head->content.time<=main_time)&&((Queue_fl[temps].head->content.finish-current_stage)*tempo>=0)){
+                if (((Queue_fl[temps].head->content.time<=main_time)&&((Queue_fl[temps].head->content.finish-temps)*tempo>0))||(Queue_fl[temps].head->content.finish==current_stage)){
                     current_stage=temps;
                     order=tempo;
                     break;
                 }
             temps+=tempo;
-            if(temps==stages){
-                tempo=-1;
-                temps+=tempo;
-            }
-            if(temps==-1){
-                tempo=1;
+            if(temps==stages||temps==-1){
+                tempo-=2*tempo;
                 temps+=tempo;
             }
             if(temps==current_stage-order&&tempo==order)
                 main_time++;
         }
         Data x;
-        x.time=0;
-        x.finish=0;
         on_head(Queue_fl[current_stage], x);
         dequeue(Queue_fl[current_stage]);
         cout<<current_stage+1<<" "<<x.finish+1<<endl;
