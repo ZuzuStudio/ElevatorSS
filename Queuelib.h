@@ -19,6 +19,7 @@ struct Queue
 {
     Node *head;
     Node *tail;
+    short hmp, maxhmp;
 };
 
 void enqueue (Queue &a, Data dt);

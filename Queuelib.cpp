@@ -9,14 +9,8 @@ void enqueue (Queue &a, Data dt)
     temp=new Node;
     temp->content=dt;
     temp->link=NULL;
-    if(!is_empty(a)){
-        a.tail->link=temp;
-        a.tail=temp;
-    }
-    else{
-        a.tail=temp;
-        a.head=a.tail;
-    }
+    is_empty(a)?a.head=temp: a.tail->link=temp;
+    a.tail=temp;
     temp=NULL;
 }
 
