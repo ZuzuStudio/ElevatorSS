@@ -50,7 +50,6 @@ void move(Queue *a, char *b, short start, short finish, short &main_time, const 
                 {
                     b[i]=full;
                     a[i].hmp--;
-
                 }
             }
             cout<<endl;
