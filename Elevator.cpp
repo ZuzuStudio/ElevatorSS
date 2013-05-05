@@ -6,7 +6,7 @@
 
 using namespace std;
 
-void draw(Queue *a, char *b, short c)
+void draw(Queue<Men> *a, char *b, short c)
 {
     system("clear");
     for (short i=c-1; i>=0; --i)
@@ -21,7 +21,8 @@ void draw(Queue *a, char *b, short c)
     }
 }
 
-void move(Queue *a, char *b, short start, short finish, short &main_time, const char ch, short stages, short &av, short &avn)
+void move(Queue<Men> *a, char *b, short start, short finish, short
+          &main_time, const char ch, short stages, short &av, short &avn)
 {
     short order;
     if (start==finish)
@@ -98,7 +99,7 @@ void move(Queue *a, char *b, short start, short finish, short &main_time, const 
     draw(a, b, stages);
 }
 
-void inctime(Queue *a, short &main_time, short stages) //
+void inctime(Queue<Men> *a, short &main_time, short stages)
 {
     usleep(unit);
     main_time++;

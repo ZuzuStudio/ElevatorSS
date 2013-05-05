@@ -21,20 +21,20 @@ int main()
     script=NULL;
     fin>>stages;
     fin>>people;
-    Queue *Queue_fl=new Queue[stages];
+    Queue<Men> *Queue_fl=new Queue<Men>[stages];
     for (short i=0; i<stages; ++i)
     {
         Queue_fl[i].head=NULL;
         Queue_fl[i].tail=NULL;
         Queue_fl[i].hmp=0;
         Queue_fl[i].maxhmp=0;
-        Queue_fl[i].h=new bool[fund]; //
-        for (short j=0; j<fund;++j) //
-            Queue_fl[i].h[j]=false; //
+        Queue_fl[i].h=new bool[fund];
+        for (short j=0; j<fund;++j)
+            Queue_fl[i].h[j]=false;
     }
     for (short i=0; i<people&&(!fin.eof()); ++i)
     {
-        Data man;
+        Men man;
         short start;
         fin>>start;
         fin>>man.finish;
@@ -66,9 +66,11 @@ int main()
                 if ((Queue_fl[temps].head->content.time<=main_time)
                         &&((Queue_fl[temps].head->content.finish-temps)*tempo>=0))
                 {
-                    move(Queue_fl, elevator, current_stage, temps, main_time, empty, stages, av, avn);
+                    move(Queue_fl, elevator, current_stage, temps,
+                         main_time, empty, stages, av, avn);
                     current_stage=temps;
-                    move(Queue_fl, elevator, current_stage, Queue_fl[temps].head->content.finish, main_time, full, stages, av, avn);
+                    move(Queue_fl, elevator, current_stage, Queue_fl[temps].head->content.finish,
+                         main_time, full, stages, av, avn);
                     order=tempo;
                     break;
                 }
@@ -86,7 +88,7 @@ int main()
                 check=0;
             }
         }
-        Data temp;
+        Men temp;
         on_head(Queue_fl[current_stage], temp);
         dequeue(Queue_fl[current_stage]);
         current_stage=temp.finish;
